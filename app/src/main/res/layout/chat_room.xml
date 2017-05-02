@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_room"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jason.chat.com.jason.chat.ChatRoom"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="424dp"
+        android:layout_weight="0.96"
+        android:id="@+id/messagesList"
+        android:divider="@null"
+        android:stackFromBottom="true"
+        android:background="#f9f5f6"
+        android:paddingBottom="5dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e9e8e6"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:inputType="textCapSentences|textAutoCorrect"
+            android:ems="10"
+            android:id="@+id/inputMessage"
+            android:layout_weight="1.02" />
+
+        <Button
+            android:layout_height="match_parent"
+            android:id="@+id/sendButton"
+            android:background="@android:drawable/ic_menu_send"
+            android:onClick="sendBtn"
+            android:layout_width="60dp" />
+    </LinearLayout>
+
+</LinearLayout>
