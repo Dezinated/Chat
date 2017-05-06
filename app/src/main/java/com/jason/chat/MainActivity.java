@@ -77,18 +77,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInAnonymously:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                         } else {
-                            // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInAnonymously:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
-
-                        // [START_EXCLUDE]
-                        // [END_EXCLUDE]
                     }
                 });
         // [END signin_anonymously]
@@ -139,20 +133,19 @@ public class MainActivity extends AppCompatActivity {
         Button btn = (Button) findViewById(R.id.startChat);
         if(btn.getText().toString().equals("Start Chat")){
             me.avaliable = true;
-            root.child("Users").child(me.id).setValue(me);
             btn.setText("Cancel Search");
 
             ((LinearLayout) findViewById(R.id.searchingContainer)).setVisibility(View.VISIBLE);
-            new StartChat().execute("");
+
 
         }else{
             me.avaliable = false;
-            root.child("Users").child(me.id).setValue(me);
             btn.setText("Start Chat");
 
             ((LinearLayout) findViewById(R.id.searchingContainer)).setVisibility(View.INVISIBLE);
         }
 
+        root.child("Users").child(me.id).setValue(me);
     }
 
 
