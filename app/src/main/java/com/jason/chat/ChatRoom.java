@@ -62,7 +62,7 @@ public class ChatRoom extends AppCompatActivity {
         Intent intent = getIntent();
         roomId = (String) intent.getExtras().get("id");
         myId = (String) intent.getExtras().get("androidId");
-        getSupportActionBar().setTitle("Chat ");
+        getSupportActionBar().setTitle("Chat "+roomId);
 
         ListView yourListView = (ListView) findViewById(R.id.messagesList);
         msgAdapter = new MessageAdapter(this, messages, myId);
