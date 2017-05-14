@@ -28,6 +28,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import android.provider.Settings.Secure;
 import android.widget.Toast;
 
@@ -61,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
         //signInAnonymously();
 
+        //Print Token
+        Log.d(TAG, "Printing fcm token");
+        Log.d(TAG,  FirebaseInstanceId.getInstance().getToken());
+        //Finish Print Token
 
 
         mAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
