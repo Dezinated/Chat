@@ -52,6 +52,9 @@ public class MessageAdapter extends ArrayAdapter<Message> {
                 if(p.senderId == myId){
                     container.setGravity(Gravity.RIGHT);
                     tt1.setBackgroundResource(R.drawable.message_bubble_send);
+                }else{
+                    container.setGravity(Gravity.LEFT);
+                    tt1.setBackgroundResource(R.drawable.message_bubble);
                 }
             }
 
