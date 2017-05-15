@@ -29,6 +29,7 @@ import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -60,6 +61,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
+
+
+
+
+
+            if(remoteMessage.getData().get("action").equals("openRoom")) {
+                Intent intent = new Intent(MainActivity.this, ChatRoom.class);
+                intent.putExtra("id",remoteMessage.getData().get("room")); //room id
+                intent.putExtra("androidId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                startActivity(intent);
+            }
+
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
 
             if (/* Check if data needs to be processed by long running job */ true) {
