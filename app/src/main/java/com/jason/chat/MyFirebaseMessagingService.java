@@ -70,7 +70,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 Intent intent = new Intent(this, ChatRoom.class);
                 intent.putExtra("id",remoteMessage.getData().get("room")); //room id
                 intent.putExtra("androidId", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP  | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
 

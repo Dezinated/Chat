@@ -70,6 +70,7 @@ public class ChatRoom extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        clearChatRoom();
         setContentView(R.layout.chat_room);
         messages = new ArrayList<>();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -84,7 +85,7 @@ public class ChatRoom extends AppCompatActivity {
         msgAdapter = new MessageAdapter(this, messages, myId);
         yourListView.setAdapter(msgAdapter);
 
-        clearChatRoom();
+
         root.child("Rooms").child(roomId).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {

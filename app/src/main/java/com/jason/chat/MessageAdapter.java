@@ -52,7 +52,7 @@ public class MessageAdapter extends ArrayAdapter<Message> {
                 if (tt1 != null) {
                     container.setGravity(Gravity.CENTER);
                     tt1.setTypeface(null, Typeface.BOLD);
-                    tt1.getBackground().setAlpha(100);
+                    tt1.setBackgroundResource(R.drawable.message_important);
                     tt1.setText("Your partner has disconnected");
 
                     //tt1.setBackgroundColor(R.drawable.transparent)
