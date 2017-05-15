@@ -67,7 +67,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
             if(remoteMessage.getData().get("action").equals("openRoom")) {
-                Intent intent = new Intent(MainActivity.this, ChatRoom.class);
+                Intent intent = new Intent(this, ChatRoom.class);
                 intent.putExtra("id",remoteMessage.getData().get("room")); //room id
                 intent.putExtra("androidId", FirebaseAuth.getInstance().getCurrentUser().getUid());
                 startActivity(intent);

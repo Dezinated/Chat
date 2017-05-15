@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.d(TAG, "signInAnonymously:success");
                             android_id = mAuth.getCurrentUser().getUid();
                             me = new User(android_id);
+                            me.fcm = FirebaseInstanceId.getInstance().getToken();
                             root = Utils.getDatabase().getReference();
                             root.child("Users").child(me.id).setValue(me);
                             root.child("Users").child(me.id).onDisconnect().removeValue();
@@ -121,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
             btn.setText("Cancel Search");
             root.child("Users").child(me.id).setValue(me);
             ((LinearLayout) findViewById(R.id.searchingContainer)).setVisibility(View.VISIBLE);
-            new StartChat().execute("");
 
         }else{
             me.avaliable = false;
