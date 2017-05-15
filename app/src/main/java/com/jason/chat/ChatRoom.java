@@ -32,6 +32,7 @@ public class ChatRoom extends AppCompatActivity {
     private String roomId;
     private String myId;
     MessageAdapter msgAdapter;
+    private boolean chatEnded = false;
 
     public boolean onOptionsItemSelected(MenuItem item){
 
@@ -53,8 +54,10 @@ public class ChatRoom extends AppCompatActivity {
     }
 
     public void sendExit() {
-        Message m = new Message("exit","exit");
-        root.child("Rooms").child(roomId).push().setValue(m);
+        if(!chatEnded) {
+            Message m = new Message("exit", "exit");
+            root.child("Rooms").child(roomId).push().setValue(m);
+        }
     }
 
     public void clearChatRoom() {
@@ -91,6 +94,7 @@ public class ChatRoom extends AppCompatActivity {
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {
                 Message m = snapshot.getValue(Message.class);
                 if (m.senderId.equals("exit")) {
+                    chatEnded = true;
                     TextView textBox = (TextView) findViewById(R.id.inputMessage);
                     textBox.setFocusable(false);
                 }
