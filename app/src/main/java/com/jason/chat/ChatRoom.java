@@ -43,12 +43,23 @@ public class ChatRoom extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        sendExit();
                         Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivityForResult(myIntent, 0);
                     }})
                 .setNegativeButton(android.R.string.no, null).show();
         return true;
 
+    }
+
+    public void sendExit() {
+        Message m = new Message("exit","exit");
+        root.child("Rooms").child(roomId).push().setValue(m);
+    }
+
+    protected void onDestroy(){
+        sendExit();
+        super.onDestroy();
     }
 
     @Override
@@ -73,6 +84,10 @@ public class ChatRoom extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {
                 Message m = snapshot.getValue(Message.class);
+                if (m.senderId.equals("exit")) {
+                    TextView textBox = (TextView) findViewById(R.id.inputMessage);
+                    //textBox.
+                }
                 messages.add(m);
                 msgAdapter.notifyDataSetChanged();
                 ((ListView) findViewById(R.id.messagesList)).setSelection(msgAdapter.getCount() - 1);

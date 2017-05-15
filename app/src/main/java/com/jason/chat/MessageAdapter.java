@@ -44,17 +44,28 @@ public class MessageAdapter extends ArrayAdapter<Message> {
         Message p = getItem(position);
 
         if (p != null) {
-            TextView tt1 = (TextView) v.findViewById(R.id.messageText);
-            LinearLayout container = (LinearLayout) v.findViewById(R.id.messageContainer);
 
-            if (tt1 != null) {
-                tt1.setText(p.text);
-                if(p.senderId == myId){
-                    container.setGravity(Gravity.RIGHT);
-                    tt1.setBackgroundResource(R.drawable.message_bubble_send);
-                }else{
-                    container.setGravity(Gravity.LEFT);
-                    tt1.setBackgroundResource(R.drawable.message_bubble);
+            if(p.senderId.equals("exit")){
+                TextView tt1 = (TextView) v.findViewById(R.id.messageText);
+                LinearLayout container = (LinearLayout) v.findViewById(R.id.messageContainer);
+                if (tt1 != null) {
+                    container.setGravity(Gravity.CENTER);
+                    tt1.setText("Your partner has disconnected");
+                    //tt1.setBackgroundColor(R.drawable.transparent)
+                }
+            }else {
+                TextView tt1 = (TextView) v.findViewById(R.id.messageText);
+                LinearLayout container = (LinearLayout) v.findViewById(R.id.messageContainer);
+
+                if (tt1 != null) {
+                    tt1.setText(p.text);
+                    if (p.senderId == myId) {
+                        container.setGravity(Gravity.RIGHT);
+                        tt1.setBackgroundResource(R.drawable.message_bubble_send);
+                    } else {
+                        container.setGravity(Gravity.LEFT);
+                        tt1.setBackgroundResource(R.drawable.message_bubble);
+                    }
                 }
             }
 
