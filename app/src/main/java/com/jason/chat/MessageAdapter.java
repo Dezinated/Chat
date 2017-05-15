@@ -1,6 +1,7 @@
 package com.jason.chat;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,10 @@ public class MessageAdapter extends ArrayAdapter<Message> {
                 LinearLayout container = (LinearLayout) v.findViewById(R.id.messageContainer);
                 if (tt1 != null) {
                     container.setGravity(Gravity.CENTER);
+                    tt1.setTypeface(null, Typeface.BOLD);
+                    tt1.getBackground().setAlpha(100);
                     tt1.setText("Your partner has disconnected");
+
                     //tt1.setBackgroundColor(R.drawable.transparent)
                 }
             }else {

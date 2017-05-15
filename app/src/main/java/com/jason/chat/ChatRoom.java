@@ -57,8 +57,13 @@ public class ChatRoom extends AppCompatActivity {
         root.child("Rooms").child(roomId).push().setValue(m);
     }
 
+    public void clearChatRoom() {
+        root.child("Rooms").child(roomId).setValue("");
+    }
+
     protected void onDestroy(){
         sendExit();
+        clearChatRoom();
         super.onDestroy();
     }
 
@@ -79,14 +84,14 @@ public class ChatRoom extends AppCompatActivity {
         msgAdapter = new MessageAdapter(this, messages, myId);
         yourListView.setAdapter(msgAdapter);
 
-        root.child("Rooms").child(roomId).setValue("");
+        clearChatRoom();
         root.child("Rooms").child(roomId).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {
                 Message m = snapshot.getValue(Message.class);
                 if (m.senderId.equals("exit")) {
                     TextView textBox = (TextView) findViewById(R.id.inputMessage);
-                    //textBox.
+                    textBox.setFocusable(false);
                 }
                 messages.add(m);
                 msgAdapter.notifyDataSetChanged();
