@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                             me.fcm = FirebaseInstanceId.getInstance().getToken();
                             root = Utils.getDatabase().getReference();
                             root.child("Users").child(me.id).setValue(me);
-                            root.child("Users").child(me.id).onDisconnect().removeValue();
                         } else {
                             Log.w(TAG, "signInAnonymously:failure", task.getException());
                             Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
