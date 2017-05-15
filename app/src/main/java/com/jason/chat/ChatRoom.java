@@ -72,6 +72,7 @@ public class ChatRoom extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        chatEnded = false;
         super.onCreate(savedInstanceState);
         clearChatRoom();
         setContentView(R.layout.chat_room);
