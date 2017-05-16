@@ -10,8 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.jason.chat.R;
-
 import java.util.ArrayList;
 
 /**
