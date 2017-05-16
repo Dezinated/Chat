@@ -4,9 +4,12 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
@@ -20,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.jason.chat.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(FirebaseRemoteConfig.getInstance().getDouble("version") != 1.0) {
+            showUpdateDialog();
+        }
+
+
         startBtn = (Button) findViewById(R.id.startChat);
 
 
@@ -88,10 +97,28 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void signInAnonymously() {
-        // [START signin_anonymously]
+    private void showUpdateDialog(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("A New Update is Available");
+        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("market://details?id=com.jason.chat"));
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
 
-        // [END signin_anonymously]
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        builder.setCancelable(false);
+        builder.show();
     }
 
     @Override

@@ -29,8 +29,8 @@ public class ChatRoom extends AppCompatActivity {
     DatabaseReference root = FirebaseDatabase.getInstance().getReference();
     //DatabaseReference myRef = database.getReference("rooms");
     ArrayList<Message> messages;
-    private String roomId;
-    private String myId;
+    private String roomId = "";
+    private String myId = "";
     MessageAdapter msgAdapter;
     private boolean chatEnded = false;
 
