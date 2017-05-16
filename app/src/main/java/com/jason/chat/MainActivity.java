@@ -65,12 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         startBtn = (Button) findViewById(R.id.startChat);
-
-
-
         mAuth = FirebaseAuth.getInstance();
-
-        //signInAnonymously();
 
         //Print Token
         Log.d(TAG, "Printing fcm token");
@@ -127,21 +122,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop(){
-        if(!me.avaliable){
-            super.onStop();
-            return;
-        }
-
-
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        Log.d(TAG, "DESTROYED");
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.cancelAll();
         super.onDestroy();
     }
 
