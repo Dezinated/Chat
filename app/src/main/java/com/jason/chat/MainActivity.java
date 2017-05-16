@@ -74,22 +74,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         mAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "signInAnonymously:success");
-                            android_id = mAuth.getCurrentUser().getUid();
-                            me = new User(android_id);
-                            me.fcm = FirebaseInstanceId.getInstance().getToken();
-                            root = Utils.getDatabase().getReference();
-                            root.child("Users").child(me.id).setValue(me);
-                        } else {
-                            Log.w(TAG, "signInAnonymously:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                            System.exit(0);
-                        }
-                    }
-                });
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "signInAnonymously:success");
+                    android_id = mAuth.getCurrentUser().getUid();
+                    me = new User(android_id);
+                    me.fcm = FirebaseInstanceId.getInstance().getToken();
+                    root = Utils.getDatabase().getReference();
+                    root.child("Users").child(me.id).setValue(me);
+                } else {
+                    Log.w(TAG, "signInAnonymously:failure", task.getException());
+                    Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    System.exit(0);
+                }
+            }
+        });
     }
 
     private void showUpdateDialog(){
