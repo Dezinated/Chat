@@ -64,6 +64,10 @@ public class ChatRoom extends AppCompatActivity {
         root.child("Rooms").child(roomId).setValue("");
     }
 
+    protected void onStop() {
+        super.onStop();
+    }
+
     protected void onDestroy(){
         sendExit();
         super.onDestroy();
