@@ -52,6 +52,7 @@ public class MessageAdapter extends ArrayAdapter<Message> {
                     tt1.setTypeface(null, Typeface.BOLD);
                     tt1.setBackgroundResource(R.drawable.message_important);
                     tt1.setText("Your partner has disconnected");
+                    tt1.setTypeface(null, Typeface.NORMAL);
                 }
             }else if(p.senderId.equals("join")){
                 TextView tt1 = (TextView) v.findViewById(R.id.messageText);
