@@ -47,11 +47,6 @@ public class MainActivity extends AppCompatActivity {
         startBtn = (Button) findViewById(R.id.startChat);
         mAuth = FirebaseAuth.getInstance();
 
-        //Print Token
-        Log.d(TAG, "Printing fcm token");
-        Log.d(TAG,  FirebaseInstanceId.getInstance().getToken());
-        //Finish Print Token
-
 
         mAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override

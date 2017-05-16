@@ -18,6 +18,8 @@ package com.jason.chat;
 
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
@@ -55,5 +57,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      */
     private void sendRegistrationToServer(String token) {
         // TODO: Implement this method to send token to your app server.
+        DatabaseReference root = Utils.getDatabase().getReference();
+        root.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("fcm").setValue(token);
     }
 }
