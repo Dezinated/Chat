@@ -44,28 +44,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseRemoteConfig.getInstance().fetch().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    FirebaseRemoteConfig.getInstance().activateFetched();
-                }
-            }
-        });
-
-        FirebaseRemoteConfigSettings remoteConfigSettings = new FirebaseRemoteConfigSettings.Builder()
-                .setDeveloperModeEnabled(true)
-                .build();
-
-        FirebaseRemoteConfig.getInstance().setConfigSettings(remoteConfigSettings);
-
-
-        Log.d(TAG,FirebaseRemoteConfig.getInstance().getDouble("forceVersion")+" VERSION");
-        if(FirebaseRemoteConfig.getInstance().getDouble("forceVersion") != 1.0) {
-            showUpdateDialog();
-        }
-
-
         startBtn = (Button) findViewById(R.id.startChat);
         mAuth = FirebaseAuth.getInstance();
 
