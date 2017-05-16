@@ -52,8 +52,15 @@ public class MessageAdapter extends ArrayAdapter<Message> {
                     tt1.setTypeface(null, Typeface.BOLD);
                     tt1.setBackgroundResource(R.drawable.message_important);
                     tt1.setText("Your partner has disconnected");
-
-                    //tt1.setBackgroundColor(R.drawable.transparent)
+                }
+            }else if(p.senderId.equals("join")){
+                TextView tt1 = (TextView) v.findViewById(R.id.messageText);
+                LinearLayout container = (LinearLayout) v.findViewById(R.id.messageContainer);
+                if (tt1 != null) {
+                    container.setGravity(Gravity.CENTER);
+                    tt1.setTypeface(null, Typeface.BOLD);
+                    tt1.setBackgroundResource(R.drawable.message_important);
+                    tt1.setText("You have connected to the chat");
                 }
             }else {
                 TextView tt1 = (TextView) v.findViewById(R.id.messageText);
