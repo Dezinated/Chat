@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(FirebaseRemoteConfig.getInstance().getDouble("version") != 1.0) {
+        if(FirebaseRemoteConfig.getInstance().getDouble("forceVersion") != 1.0) {
             showUpdateDialog();
         }
 
