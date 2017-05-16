@@ -17,15 +17,15 @@
         android:gravity="center">
 
         <TextView
-            android:text="Chat Random"
+            android:id="@+id/usersOnline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/usersOnline"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textSize="24sp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="Chat Random"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="24sp" />
 
         <TextView
             android:text="Chat with random strangers"
@@ -36,32 +36,32 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/searchingContainer"
         android:layout_width="202dp"
         android:layout_height="90dp"
-        android:weightSum="1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_weight="0.45"
         android:gravity="center_horizontal"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/searchingContainer"
-        android:visibility="invisible">
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:weightSum="1">
 
         <TextView
-            android:text="Searching"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView"
             android:layout_above="@+id/progressBar2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="Searching" />
 
         <ProgressBar
+            android:id="@+id/progressBar2"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:id="@+id/progressBar2"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

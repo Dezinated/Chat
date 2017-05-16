@@ -64,20 +64,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
-    /**
-     * Schedule a job using FirebaseJobDispatcher.
-     */
-    private void scheduleJob() {
-        // [START dispatch_job]
-        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
-        Job myJob = dispatcher.newJobBuilder()
-                .setService(MyJobService.class)
-                .setTag("my-job-tag")
-                .build();
-        dispatcher.schedule(myJob);
-        // [END dispatch_job]
-    }
-
     private void sendNotification(String messageBody) {
         Log.d(TAG, "Building Notification");
         Intent intent = new Intent(this, MainActivity.class);
