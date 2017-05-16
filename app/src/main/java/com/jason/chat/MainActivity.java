@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.setData(Uri.parse("market://details?id=com.jason.chat"));
                 if (intent.resolveActivity(getPackageManager()) != null){
                     startActivityForResult(intent, 0);
+                    finish();
                 }else {
                     dialog.dismiss();
                     finish();
