@@ -73,7 +73,6 @@ public class ChatRoom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         chatEnded = false;
         super.onCreate(savedInstanceState);
-        clearChatRoom();
         setContentView(R.layout.chat_room);
         messages = new ArrayList<>();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
