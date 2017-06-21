@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     me.fcm = FirebaseInstanceId.getInstance().getToken();
                     root = Utils.getDatabase().getReference();
                     root.child("Users").child(me.id).setValue(me);
+                    root.child("Queue").child(me.id).onDisconnect().removeValue();
                 } else {
                     Log.w(TAG, "signInAnonymously:failure", task.getException());
                     Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
@@ -109,18 +110,14 @@ public class MainActivity extends AppCompatActivity {
     public void startChat(View v) {
         Button btn = (Button) findViewById(R.id.startChat);
         if(btn.getText().toString().equals("Start Chat")){
-            me.avaliable = true;
             btn.setText("Cancel Search");
-            root.child("Users").child(me.id).setValue(me);
+            root.child("Queue").child(me.id).setValue(me.id);
             ((LinearLayout) findViewById(R.id.searchingContainer)).setVisibility(View.VISIBLE);
-        }else{
-            me.avaliable = false;
+        }else {
             btn.setText("Start Chat");
-            root.child("Users").child(me.id).setValue(me);
+            root.child("Queue").child(me.id).removeValue();
             ((LinearLayout) findViewById(R.id.searchingContainer)).setVisibility(View.INVISIBLE);
         }
-
-
     }
 
 

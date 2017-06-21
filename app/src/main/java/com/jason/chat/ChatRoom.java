@@ -56,7 +56,6 @@ public class ChatRoom extends AppCompatActivity {
         if(!chatEnded) {
             Message m = new Message("exit", "exit");
             root.child("Rooms").child(roomId).push().setValue(m);
-            clearChatRoom();
         }
     }
 

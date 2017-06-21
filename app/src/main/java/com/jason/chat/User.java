@@ -7,7 +7,6 @@ package com.jason.chat;
 public class User {
     public String id;
     public String fcm;
-    public boolean avaliable = false;
 
     public User() {
         this.id = "-1";
